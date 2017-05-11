@@ -1,0 +1,35 @@
+﻿@model BeautySNS.Admin.Models.Pages.PageViewModel
+@{
+    ViewBag.Title = "AboutUs";
+}
+
+<h2 class="page-header">Frequently Asked Questions</h2>
+<div>
+    <p>
+       If you have any questions, please email us at BeautySNSUK@gmail.com.
+       <br />We will respond to your email within 24 hours.
+    </p>
+    <p>
+        Your question along side its answer will also be anonymously published on this page 
+        <br /> in order to help others.
+    </p>
+    <p>
+        <br />
+        Regards,
+        <br/> BeautySNS
+    </p>
+</div>
+
+<hr />
+<footer>
+    <p>
+        <a href="@Url.Action("AboutUs", "Page")">About Us</a> |
+        <a href="@Url.Action("PrivacyPolicy", "Page")">Privacy Policy</a> |
+        <a href="@Url.Action("SiteTerms", "Page")">Terms and Conditions</a> |
+        <a href="@Url.Action("FAQs", "Page")">FAQs</a> |
+        <a href="@Url.Action("Register", "Account")">Sign Up</a> |
+        <a href="@Url.Action("Login", "Account")"> Log In </a>
+    </p>
+    <p>BeautySNSUK@gmail.com</p>
+    <p>&copy; @DateTime.Now.Year - BeautySNS </p>
+</footer>

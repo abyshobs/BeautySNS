@@ -1,0 +1,33 @@
+﻿@model IEnumerable<BeautySNS.Domain.Model.FriendInvitation>
+
+@{
+    ViewBag.Title = "Pending Requests";
+}
+
+<table>
+
+
+    <tbody>
+        @foreach (var item in Model)
+        {   
+            <tr>
+                <td>
+                    <img style="float:left" src="@Url.Action("getFriendImg", "Friend", new { id = item.Account.accountID })" class="img-circle" height="200" width="200" alt="avatar" />
+                </td>
+
+                <td>
+                    <br /><b>@Html.DisplayFor(modelItem => item.Account.firstName) @Html.DisplayFor(modelItem => item.Account.lastName)</b>
+                   <br /> <b>@Html.DisplayFor(modelItem => item.Account.Profile.Job.name)</b><br/>
+
+                    <br /><b>@Html.ActionLink("Confirm", "ConfirmNetworkRequest", "Friend", new { id = item.friendInvitationID}, null) | @Html.ActionLink("Reject", "RejectNetworkRequest", "Friend", new { id = item.friendInvitationID }, null)</b>            
+                    
+                    <br /><a href="@Url.Action("UserProfileHomePage", "Profile", new { id = item.accountID})">View Profile </a>
+</td>
+                                                   
+            </tr>
+         
+        }
+    </tbody>
+
+</table>
+

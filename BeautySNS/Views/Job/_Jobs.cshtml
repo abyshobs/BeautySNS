@@ -1,0 +1,31 @@
+﻿@model IEnumerable<BeautySNS.Domain.Model.Job>
+
+@{
+    ViewBag.Title = "_Jobs";
+}
+
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.name)
+                    </td>
+
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.jobID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+    </div>

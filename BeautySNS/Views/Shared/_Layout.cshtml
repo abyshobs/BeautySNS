@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - BeautySNS </title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")  
+    <script type="text/javascript">
+    $(function () { // will trigger when the document is ready
+        $('.datepicker').datepicker(); //Initialise any date pickers
+    });
+    </script>
+</head>
+
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="navbar-brand"><br /><p style="font-size:xx-large; color: #5c5a5a">BeautySNS</p></div>
+
+                </div>
+                <div class="navbar-collapse collapse">
+                    @if (Model.userSession != null && Model.userSession != true)
+                    { 
+                    <ul>
+                        @Html.Action("LoginPartial", "Account", new { area = "" })
+                    </ul>
+                    }
+                    
+                    @if (Model.userSession == true && Model.adminUser == false)
+                    {                        
+                        using (Html.BeginForm("Index", "Account"))
+                        {
+                        <div class="col-sm-3 col-md-3 pull-left">
+                            <br />
+                            <form class="navbar-form" role="search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search" name="searchString" id="searchString">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    }                                               
+                      
+                    <div class="pull-right"><br />
+
+                        <a href="@Url.Action("ProfileHomepage", "Profile", new { id = Model.accountID})">
+                            <button type="submit" class="btn btn-default btn-sm">
+                                <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                            </button>
+                            </a>
+
+                            <a href="@Url.Action("UserProfileHomepage", "Profile", new { id = Model.loggedInAccountID})">
+                                <button type="submit" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                </button>
+                            </a>
+
+                            <a href="@Url.Action("Logout", "Account")">
+                                <button type="submit" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-off" aria-hidden="true"></span> Logout
+                                </button>
+                            </a>
+                          
+</div>
+                    }
+                    
+
+                 @if (Model.userSession == true && Model.adminUser == true)
+                    {
+                        using (Html.BeginForm("AdminSearch", "Admin")){
+                            <div class="col-sm-3 col-md-3 pull-left">
+                                <br />
+                                <form class="navbar-form" role="search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Search" name="searchString" id="searchString">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        }
+                        <div class="pull-right">
+                            <br />
+
+                            <a href="@Url.Action("SiteActivity", "Alert")">
+                                <button type="submit" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                                </button>
+                            </a>
+
+                            <a href="@Url.Action("MyActivity", "Admin")">
+                                <button type="submit" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                </button>
+                            </a>
+
+                            <a href="@Url.Action("Logout", "Account")">
+                                <button type="submit" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-off" aria-hidden="true"></span> Logout
+                                </button>
+                            </a>
+
+                        </div>
+
+                    }
+
+                </div>
+                <br />
+            </div>
+    </div>
+    <br/>
+    <div class="container body-content">
+        <br/>
+        <br/>
+        @RenderBody()
+      
+        </div>
+
+    @*<footer class="footer">
+        <div class="container">
+            <br />
+            <p class="text-muted">
+                <a href="" class="text-muted">About Us |</a> Privacy Policy   | Terms and Conditions
+                <br />&copy; @DateTime.Now.Year - BeautySNS
+        </div>
+    </footer>*@ 
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    @RenderSection("scripts", required: false)
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="~/Content/bootstrap.min.css"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="../../assets/js/vendor/holder.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+</body>
+
+</html>

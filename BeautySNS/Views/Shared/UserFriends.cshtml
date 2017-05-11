@@ -1,0 +1,15 @@
+﻿@model IEnumerable<BeautySNS.Domain.Model.Account>
+
+@{
+    ViewBag.Title = "Pending Requests";
+}
+
+
+                @foreach (var item in Model)
+                {
+
+                            <a href="@Url.Action("UserProfileHomePage", "Profile", new { id = item.accountID})">
+                                <img style="float:left" src="@Url.Action("getFriendImg", "Friend", new { id = item.accountID })" class="img-circle" height="100" width="100" alt="avatar" />
+                            </a>
+
+                }

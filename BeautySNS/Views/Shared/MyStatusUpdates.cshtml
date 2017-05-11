@@ -1,0 +1,30 @@
+﻿@model IEnumerable<BeautySNS.Domain.Model.StatusUpdate>
+
+@{
+    ViewBag.Title = "Status Updates";
+}
+
+<div>
+@foreach (var item in Model)
+{
+    <div>
+        <b>Message</b> : @Html.DisplayFor(modelItem => item.status)
+        <br /> <b>Posted on</b> : @Html.DisplayFor(modelItem => item.createDate)              
+        <br />
+        <a href="@Url.Action("Delete", "StatusUpdate", new { id = item.statusUpdateID})">
+            <i class="glyphicon glyphicon-trash"></i>
+            <span class="sr-only">Delete</span>
+        </a>
+       
+    </div>
+    
+    <hr />
+    <br/>
+}
+
+</div>
+
+
+
+
+

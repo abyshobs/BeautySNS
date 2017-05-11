@@ -1,0 +1,28 @@
+﻿@model IEnumerable<BeautySNS.Domain.Model.Permission>
+
+@{
+    ViewBag.Title = "_Permissions";
+}
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.name)
+                    </td>
+
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>

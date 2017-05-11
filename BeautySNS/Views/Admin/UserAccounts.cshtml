@@ -1,0 +1,110 @@
+﻿@model BeautySNS.Admin.Models.Accounts.IndexViewModel
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <br />   <br />
+            <b>@Html.DisplayFor(model => model.permissionType) User</b><br /><br />
+            <b>@Html.DisplayFor(model => model.loggedInAccount.firstName) @Html.DisplayFor(model => model.loggedInAccount.lastName)</b>
+            <br />
+            @Html.DisplayFor(model => model.loggedInAccount.email)
+            <br />
+
+
+            <br />
+
+            <ul class="nav nav-sidebar">
+                <li>
+                    <a href="@Url.Action("SiteActivity", "Alert")">
+                        <i class="glyphicon glyphicon-stats"></i>
+                        <span>News Feed/ Site Activity</span>
+                    </a>
+                </li>
+@if (Model.permissionType == "SuperAdmin") {
+                <li>
+                    <a href="@Url.Action("AdminActivity", "Alert")">
+                        <i class="glyphicon glyphicon-stats"></i>
+                        <span>News Feed/ Admin Activity</span>
+                    </a>
+                </li>
+}
+                <li>
+                    <a href="@Url.Action("MyActivity", "Admin")">
+                        <i class="glyphicon glyphicon-cog"></i>
+                        <span>My Activity</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="@Url.Action("UserAccounts", "Admin")">
+                        <i class="glyphicon glyphicon-user"></i>
+                        <span>User Accounts</span>
+                    </a>
+                </li>
+@if (Model.permissionType == "SuperAdmin")
+{
+                <li>
+                    <a href="@Url.Action("AccountPermissionIndex", "Permission")">
+                        <i class="glyphicon glyphicon-user"></i>
+                        <span>Admin Users</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="@Url.Action("PermissionIndex", "Permission")">
+                        <i class="glyphicon glyphicon-stats"></i>
+                        <span>Permissions</span>
+                    </a>
+                </li>
+}
+                <li>
+                    <a href="@Url.Action("Index", "Job")">
+                        <i class="glyphicon glyphicon-user"></i>
+                        <span>Jobs</span>
+                    </a>
+                </li>
+
+            </ul>
+            <br />
+            <br />
+            <span class="small-text">
+                About Us | Privacy Policy | FAQs | Terms
+                <p>&copy; @DateTime.Now.Year - BeautySNS</p>
+            </span>
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+            <div class="content-block data-disp">
+
+                @Html.Partial("_Message")
+                <h3>User Accounts</h3>
+
+                <div class="sub-wrapper clearfix">
+                    @Html.Partial("_UserAccounts", Model.Accounts)
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="~/Content/Dashboard.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+
+
+
+
+

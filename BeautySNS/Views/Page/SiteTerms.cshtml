@@ -1,0 +1,54 @@
+﻿@model BeautySNS.Admin.Models.Pages.PageViewModel
+@{
+    ViewBag.Title = "Site Terms";
+}
+
+<h2 class="page-header">Terms and Conditions</h2>
+<div>
+    <p>
+       In order to help keep BeautySNS a safe and pleasant environment for our users, we <b>require</b> that 
+       you adhere to the following guidelines:
+        <br />
+        <br /> - You will not (or attempt to) harass, bully or intimidate any of the users
+        <br /> - You will not upload viruses or other malicous code on to the site
+        <br /> - You will not post spam on the site
+        <br /> - You will not access or attempt to access an account belonging to another user
+        <br /> - You will not post any indescent images, links or messages onto the site
+        <br/>  - You will not use BeautySNS to do anything discriminatory, racist, illegal, misleading or malicous
+        <br/>  - You will not attempt to break the site's functionality or it's appearance
+        <br />
+    </p>
+</div>
+
+<div>
+    <p style="color:red"><b>
+    Should you violate any of our terms, we have the right to delete your BeautySNS account!
+</b></p>
+        <p>Also, should our terms change, our users will be notified.
+           If you disagree with any of our changes, you may close your BeautySNS account.
+        <br /> By using our site even after our terms change, you are consenting to the changes.
+    </p>
+</div>
+
+<div>
+    Should you wish to ask us any further questions about our Privacy policy
+    please contact us on BeautySNSUK@gmail.com
+
+    <br /><br /><br />
+    Regards,
+    <br /> BeautySNS.
+</div>
+
+<hr />
+<footer>
+    <p>
+        <a href="@Url.Action("AboutUs", "Page")">About Us</a> |
+        <a href="@Url.Action("PrivacyPolicy", "Page")">Privacy Policy</a> |
+        <a href="@Url.Action("SiteTerms", "Page")">Terms and Conditions</a> |
+        <a href="@Url.Action("FAQs", "Page")">FAQs</a> |
+        <a href="@Url.Action("Register", "Account")">Sign Up</a> |
+        <a href="@Url.Action("Login", "Account")"> Log In </a>
+    </p>
+    <p>BeautySNSUK@gmail.com</p>
+    <p>&copy; @DateTime.Now.Year - BeautySNS </p>
+</footer>

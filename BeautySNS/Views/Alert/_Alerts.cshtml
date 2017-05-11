@@ -1,0 +1,39 @@
+﻿@model IEnumerable<BeautySNS.Domain.Model.Alert>
+
+@{
+    ViewBag.Title = "_Alerts";
+}
+
+<div class="table-responsive">
+    <table class="table table-striped">
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>                   
+                    <td>
+                        @Html.DisplayFor(modelItem => item.message)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.createDate)
+                    </td>
+
+                    <td>
+                        <a href="@Url.Action("Delete", "Alert", new { id = item.alertID})">
+                            <i class="glyphicon glyphicon-trash"></i>
+                            <span class="sr-only">Delete</span>
+                        </a>
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+</div>
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="~/Content/Dashboard.css" rel="stylesheet">

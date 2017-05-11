@@ -1,0 +1,155 @@
+﻿@model BeautySNS.Admin.Models.Accounts.EditViewModel
+@{
+    ViewBag.Title = "Edit Account";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <br /><br/>
+            <img src="@Url.Action("getImg", "Profile", new { id = Model.loggedInAccountID})" class="nav-avatar img-responsive" align="middle" alt="avatar" />
+            <span class="avatar-span">
+                <b>@Html.DisplayFor(model => model.firstName) @Html.DisplayFor(model => model.lastName)</b>
+            </span>
+            <br />
+            <span class="avatar-span">
+                <a href="@Url.Action("FileUpload", "Profile", new { id = Model.loggedInAccountID })"> Change Profile Photo</a>
+  </span>
+
+            <br />
+            <br />
+
+            <ul class="nav nav-sidebar">
+                <li>
+                    <a href="@Url.Action("NewsFeed", "Alert")">
+                        <i class="glyphicon glyphicon-stats"></i>
+                        <span>News Feed</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("ProfileHomePage", "Profile")">
+                        <i class="glyphicon glyphicon-user"></i>
+                        <span>My Profile</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="@Url.Action("AccountDetails", "Account", new {id = Model.loggedInAccountID })">
+                        <i class="glyphicon glyphicon-cog"></i>
+                        <span>Account Settings</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="@Url.Action("Friends", "Friend")">
+                        <i class="glyphicon glyphicon-user"></i>
+                        <span>My Network</span>
+                    </a>
+                </li>                
+            </ul>
+            <br />
+            
+            <span class="small-text">
+                About Us | Privacy Policy | FAQs | Terms
+                <p>&copy; @DateTime.Now.Year - BeautySNS</p>
+            </span>
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            @if (Model.loggedInAccount.accountID == Model.accountID)
+            {
+                <p class="page-header">
+                @Html.ActionLink("Edit Account |", "EditAccount", new { id = Model.accountID })
+                @Html.ActionLink("Change Email |", "ChangeEmail")
+                @Html.ActionLink("Change Password |", "EditPassword")
+                @Html.ActionLink("Delete Account ", "DeleteAccount", new { id = Model.accountID }) <br />
+            </p>
+            }
+            else
+            {
+                <p>back</p>
+            }
+
+            <h2 class="page-header">Edit Account</h2>
+
+            <div class="content-block data-disp">
+                <div class="sub-wrapper clearfix"></div>
+                <div class="content-block data-entry">
+                    <div class="sub-wrapper clearfix">
+                        <div class="form-horizontal">
+
+                            @using (Html.BeginForm())
+                {
+                                @Html.ValidationSummary(true)
+
+                                <fieldset>
+                                    <div class="editor-label">
+                                        @Html.HiddenFor(model => model.accountID)
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-2 form-label">
+                                            @Html.LabelFor(model => model.firstName)
+                                        </div>
+                                        <div>
+                                            @Html.EditorFor(model => model.firstName, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.firstName)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-2 form-label">
+                                            @Html.LabelFor(model => model.lastName)
+                                        </div>
+                                        <div>
+                                            @Html.EditorFor(model => model.lastName, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.lastName)
+                                        </div>
+                                    </div>
+
+                                    @*<div class="form-group">
+                                        <div class="col-sm-2 form-label">
+                                            @Html.LabelFor(model => model.birthDate)
+                                        </div>
+                                        <div>
+                                            @Html.EditorFor(model => model.birthDate, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                                            @Html.ValidationMessageFor(model => model.birthDate)
+                                        </div>
+                                    </div>*@
+
+                                  
+                                    <div class="form-group">
+                                        <div class="col-sm-2 form-label"></div>
+                                            <div>
+                                                <input type="submit" value="Save" class="btn btn-default" />
+                                                @Html.ActionLink("Back", "AccountDetails", new { id = Model.accountID }, new { @class = "btn btn-default" })
+                                            </div>
+                                        </div>
+                                </fieldset>
+                }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script type="text/javascript">
+    $(function () { // will trigger when the document is ready
+        $('.datepicker').datepicker(); //Initialise any date pickers
+    });
+</script>
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="~/Content/Dashboard.css" rel="stylesheet">

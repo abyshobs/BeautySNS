@@ -1,0 +1,23 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Email Confirmation</h4>
+
+<div>
+    @Html.Partial("_Message")
+</div>
+
+<hr />
+<footer>
+    <p>
+        <a href="@Url.Action("AboutUs", "Page")">About Us</a> |
+        <a href="@Url.Action("PrivacyPolicy", "Page")">Privacy Policy</a> |
+        <a href="@Url.Action("SiteTerms", "Page")">Terms and Conditions</a> |
+        <a href="@Url.Action("FAQs", "Page")">FAQs</a> |
+        <a href="@Url.Action("Register", "Account")">Sign Up</a> |
+        <a href="@Url.Action("Login", "Account")"> Log In </a>
+    </p>
+    <p>BeautySNSUK@gmail.com</p>
+    <p>&copy; @DateTime.Now.Year - BeautySNS </p>
+</footer>

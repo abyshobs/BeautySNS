@@ -1,0 +1,30 @@
+﻿@model IEnumerable<BeautySNS.Domain.Model.Account>
+
+@{
+    ViewBag.Title = "Accounts";
+}
+
+<table>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @if(item.Profile != null)
+                { 
+                <td>
+                    <img style="float:left" src="@Url.Action("getImg", "Account", new { id = item.accountID })" class="img-circle" height="200" width="200" alt="avatar" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.firstName)  @Html.DisplayFor(modelItem => item.lastName)
+               <br /> @Html.DisplayFor(modelItem => item.Profile.Job.name)
+
+                    <br/>@Html.ActionLink("View Profile", "UserProfileHomepage","Profile", new { id = item.accountID }, null)
+                 </td>
+                }
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+

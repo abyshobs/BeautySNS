@@ -1,0 +1,89 @@
+﻿@model BeautySNS.Admin.Models.Profiles.CreateViewModel
+
+@Html.Partial("_Message")
+
+@{
+    ViewBag.Title = "Create Profile";
+}
+
+<h3 class="page-header">@ViewBag.Title.</h3>
+
+<div class="container-fluid">   
+<div class="row">
+    <div class="col-md-8">
+        
+        @using (Html.BeginForm(new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.ValidationSummary(true)
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.location, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.location, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.location,"", new { @class = "text-danger" })
+                </div>
+                <br /><br />
+            </div>
+          
+            <div class="form-group">
+                @Html.LabelFor(m => m.jobID, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.jobID, new SelectList(Model.Jobs, "jobID", "name"), "Select a job", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.jobID, "", new { @class = "text-danger" })
+                </div>
+                <br /><br />
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.website, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.website, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.website)
+                </div>
+                <br /><br />
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.aboutMe, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(m => m.aboutMe, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.aboutMe, "", new { @class = "text-danger" })
+                </div>
+                <br /><br /><br />
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.education, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(m => m.education, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.education, "", new { @class = "text-danger" })
+                </div>
+                <br /><br /><br />
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.experience, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(m => m.experience, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.experience, "", new { @class = "text-danger" })
+                </div>
+                <br /><br />
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <br />
+                    <input type="submit" value="Create" class="btn btn-default" /> <a href="/Job/Index" class="btn btn-default">Back</a>
+                </div>
+            </div>
+
+        }
+    </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+}

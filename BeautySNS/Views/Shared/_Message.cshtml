@@ -1,0 +1,19 @@
+﻿@{ Layout = null; }
+
+@{if (TempData["SuccessMessage"] != null)
+{
+    <div class="col-sm-12 alert alert-success">
+        <div>@TempData["SuccessMessage"]</div>
+    </div>
+}}
+
+@{if (TempData["ErrorMessage"] != null)
+{
+    <div class="col-sm-12 alert alert-danger">
+        <div>
+            @TempData["ErrorMessage"]
+            @Html.ValidationSummary()
+        </div>
+    </div>
+}}
+

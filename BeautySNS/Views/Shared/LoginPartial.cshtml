@@ -1,0 +1,24 @@
+﻿@model BeautySNS.Admin.Models.Accounts.LoginViewModel
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div>
+        <ul class="nav navbar-nav navbar-right">
+
+            <li>
+                <br />
+                @Html.TextBoxFor(m => m.email, new { placeholder = "Email address", @class = "control-form-sm" })
+                <br /><input type="submit" value="Log in" class="btn btn-default btn-xs" />
+                <br /> @Html.ValidationMessageFor(m => m.email, "", new { @class = "text-danger" })
+            </li>
+            <li>
+                <br />
+                @Html.PasswordFor(m => m.password, new { placeholder = "Password", @class = "control-form-sm" })
+            </li>
+            <br />
+            <a href="@Url.Action("RecoverPassword", "Account")" style="color:#5c5a5a"> Forgottten your password? </a>
+            <br /> @Html.ValidationMessageFor(m => m.password, "", new { @class = "text-danger" })
+        </ul>
+    </div>
+}

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<BeautySNS.Domain.Model.Friend>
+
+@{
+    ViewBag.Title = "Status Updates";
+}
+
+<div>
+    <table>
+        <thead></thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img style="float:left" src="@Url.Action("getFriendImg", "Friend", new { id = item.friendID})" class="img-circle" height="100" width="100" alt="avatar" />
+                </td>
+
+                <td>
+
+                </td>
+                
+            </tr>
+        }
+    </table>
+
+</div>
+
+

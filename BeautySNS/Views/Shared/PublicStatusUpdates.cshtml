@@ -1,0 +1,23 @@
+﻿@model IEnumerable<BeautySNS.Domain.Model.StatusUpdate>
+
+@{
+    ViewBag.Title = "Status Updates";
+}
+
+<div>
+    @foreach (var item in Model)
+    {
+        <div>
+            <b>Message</b> : @Html.DisplayFor(modelItem => item.status)
+            <br /> <b>Posted on</b> : @Html.DisplayFor(modelItem => item.createDate)
+            <br />
+                       
+        </div>
+
+        <hr />
+        <br />
+    }
+
+</div>
+
+

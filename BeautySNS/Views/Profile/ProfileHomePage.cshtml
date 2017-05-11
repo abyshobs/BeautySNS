@@ -1,0 +1,101 @@
+﻿@model BeautySNS.Admin.Models.Profiles.DetailsViewModel
+
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+        <div class="container-fluid">
+            <div class="row">
+                    <div class="col-sm-3 col-md-2 sidebar">
+                        <br /><br/>                                      
+                            <img src="@Url.Action("getImg", "Profile", new { id = Model.Account.accountID })" class="nav-avatar img-responsive" align="middle" alt="avatar" />
+                            <span class="avatar-span">                                                    
+                            <b>@Html.DisplayFor(model => model.fullName)</b>
+                            </span>
+                        <br />
+                        <span class="avatar-span">
+                            @Html.ActionLink("Change Profile Photo", "FileUpload", new { id = Model.profileID })
+                        </span>
+
+                        <br />                    
+                        <br />
+
+                        <ul class="nav nav-sidebar">   
+                            <li><a href="@Url.Action("NewsFeed", "Alert")">
+    <i class="glyphicon glyphicon-stats"></i>
+    <span>News Feed</span></a>
+</li>                                          
+                            <li>
+                                <a href="@Url.Action("ProfileHomePage", "Profile")">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                    <span>My Profile</span>
+                                </a>
+                            </li>                             
+                      
+                            <li>
+                                <a href="@Url.Action("AccountDetails", "Account", new {id = Model.loggedInAccountID })">
+                                    <i class="glyphicon glyphicon-cog"></i>
+                                    <span>Account Settings</span>
+                                </a>
+                            </li>                             
+
+                            <li>
+                                <a href="@Url.Action("Friends", "Friend")">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                    <span>My Network</span>
+                                </a>
+                            </li>                             
+                        </ul>  
+                        <br/>
+                                 
+                        <span class="small-text">About Us | Privacy Policy | FAQs | Terms
+                        <p>&copy; @DateTime.Now.Year - BeautySNS</p>   
+                        </span>   
+                    </div>
+
+                    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                        <p class="page-header">@Html.ActionLink("Profile Details", "ProfileDetails", new { id = Model.Account.accountID }) | @Html.ActionLink("Edit Profile", "EditProfile", new { id = Model.profileID }) <br /></p>
+                        <div>
+
+                            @Html.Action("WriteStatusUpdate", "StatusUpdate", new { area = "" })
+                        </div>
+                        <hr />                                                            
+
+                        <div>
+                            <h3>About Me</h3>
+                            <div>
+                                @Html.DisplayFor(model => model.aboutMe)
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3>Work and Experience</h3>
+                            <div>
+                                @Html.DisplayFor(model => model.experience)
+                            </div>
+                        </div>
+
+                        <div>
+                            <br/>
+                           @Html.ActionLink("View full profile details", "ProfileDetails", new {id = Model.Account.accountID })
+                        </div>
+
+                        <h3> Status Updates</h3>
+                        <div>
+                            @Html.Action("MyStatusUpdates", "StatusUpdate", new { area = "" })
+                        </div>
+                 
+</div>
+</div>
+</div>
+          
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="~/Content/Dashboard.css" rel="stylesheet">
+
+
+
+
+
+

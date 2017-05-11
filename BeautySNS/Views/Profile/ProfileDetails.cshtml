@@ -1,0 +1,224 @@
+﻿@model BeautySNS.Admin.Models.Profiles.DetailsViewModel
+
+@{
+    ViewBag.Title = "Profile Details";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <br />
+            <img src="@Url.Action("getImg", "Profile", new { id = Model.loggedInAccountID})" class="nav-avatar img-responsive" align="middle" alt="avatar" />
+            <span class="avatar-span">
+                <b>@Html.DisplayFor(model => model.fullName)</b>
+            </span>
+            <br />
+            <span class="avatar-span">
+                @Html.ActionLink("Edit Profile", "EditProfile", new { id = Model.LoggedInAccount.Profile.profileID })
+            </span>
+
+            <br />
+            <br />
+
+            <ul class="nav nav-sidebar">
+                <li>
+                    <a href="@Url.Action("NewsFeed", "Alert")">
+                        <i class="glyphicon glyphicon-stats"></i>
+                        <span>News Feed</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("ProfileHomePage", "Profile")">
+                        <i class="glyphicon glyphicon-user"></i>
+                        <span>My Profile</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="@Url.Action("AccountDetails", "Account", new {id = Model.loggedInAccountID })">
+                        <i class="glyphicon glyphicon-cog"></i>
+                        <span>Account Settings</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="@Url.Action("Friends", "Friend")">
+                        <i class="glyphicon glyphicon-user"></i>
+                        <span>My Network</span>
+                    </a>
+                </li>                            
+            </ul>
+            <br />
+            <br />
+            <span class="small-text">
+                About Us | Privacy Policy | FAQs | Terms
+                <p>&copy; @DateTime.Now.Year - BeautySNS</p>
+            </span>
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            @if (Model.LoggedInAccount.accountID == Model.Account.accountID)
+            {
+            <p class="page-header">@Html.ActionLink("Edit Profile", "EditProfile", "Profile", new { id = Model.accountID}) | @Html.ActionLink("Change Profile Photo", "FileUpload", new { id = Model.profileID }) <br /></p>
+            }
+            else
+            {
+                <p>@Html.ActionLink("Back", "UserProfileHomepage", new { id = Model.userAccount})</p>
+            }
+
+            <div class="content-block data-disp">
+                <h2>@Html.DisplayFor(model => model.fullName)</h2>
+                @Html.Partial("_Message")
+                <div class="sub-wrapper clearfix"></div>
+                <div class="content-block data-entry">
+                    <div class="sub-wrapper clearfix">
+                        <div class="form-horizontal">
+
+                            <fieldset>
+                                <legend></legend>
+
+                                <div class="form-group">
+                                    <div class="col-sm-2 form-label">
+                                        @Html.DisplayNameFor(model => model.jobID)
+                                    </div>
+                                    <div class="col-sm-2 form-field">
+                                        @Html.DisplayFor(model => model.Job.name)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-2 form-label">
+                                        @Html.DisplayNameFor(model => model.avatar)
+                                    </div>
+                                    <div class="col-sm-2 form-field">
+                                        <img src="@Url.Action("getImg", "Profile", new { id = Model.Account.accountID })" height="200" width="200" alt="avatar" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-2 form-label">
+                                        @Html.DisplayNameFor(model => model.firstName)
+                                    </div>
+                                    <div class="col-sm-2 form-field">
+                                        @Html.DisplayFor(model => model.Account.firstName)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-2 form-label">
+                                        @Html.DisplayNameFor(model => model.lastName)
+                                    </div>
+                                    <div class="col-sm-2 form-field">
+                                        @Html.DisplayFor(model => model.Account.lastName)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-2 form-label">
+                                        @Html.DisplayNameFor(model => model.birthDate)
+                                    </div>
+                                    <div class="col-sm-2 form-field">
+                                        @Html.DisplayFor(model => model.Account.birthDate)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-2 form-label">
+                                        @Html.DisplayNameFor(model => model.email)
+                                    </div>
+                                    <div class="col-sm-2 form-field">
+                                        @Html.DisplayFor(model => model.Account.email)
+                                        @*<br /> @Html.ActionLink("Change Email", "ChangeEmail")*@
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-2 form-label">
+                                        @Html.DisplayNameFor(model => model.aboutMe)
+                                    </div>
+                                    <div class="col-md-2 form-field">
+                                        @Html.DisplayFor(model => model.aboutMe)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-2 form-label">
+                                        @Html.DisplayNameFor(model => model.education)
+                                    </div>
+                                    <div class="col-sm-2 form-field">
+                                        @Html.DisplayFor(model => model.education)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-2 form-label">
+                                        @Html.DisplayNameFor(model => model.experience)
+                                    </div>
+                                    <div class="col-sm-2 form-field">
+                                        @Html.DisplayFor(model => model.experience)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-2 form-label">
+                                        @Html.DisplayNameFor(model => model.location)
+                                    </div>
+                                    <div class="col-sm-2 form-field">
+                                        @Html.DisplayFor(model => model.location)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-2 form-label">
+                                        @Html.DisplayNameFor(model => model.website)
+                                    </div>
+                                    <div class="col-sm-2 form-field">
+                                        @Html.DisplayFor(model => model.website)
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <div class="col-sm-2 form-label">
+                                        @Html.DisplayNameFor(model => model.createDate)
+                                    </div>
+                                    <div class="col-sm-2 form-field">
+                                        @Html.DisplayFor(model => model.lastUpdateDate)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-2 form-label">
+                                        @Html.DisplayNameFor(model => model.lastUpdateDate)
+                                    </div>
+                                    <div class="col-sm-2 form-field">
+                                        @Html.DisplayFor(model => model.lastUpdateDate)
+                                    </div>
+                                </div>
+                                @if (Model.LoggedInAccount.accountID == Model.Account.accountID) { 
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-2 form-label">
+                                        @Html.ActionLink("Edit Profile", "EditProfile", new { id = Model.profileID }) <br />
+                                        @Html.ActionLink("Change Photo", "FileUpload", new { id = Model.profileID }) <br />
+                                        <a href="@Url.Action("DeleteAccount", "Account", new { id = Model.accountID})">Delete Account</a>
+                                </div>
+                                </div>
+                                }
+                            </fieldset>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="~/Content/Dashboard.css" rel="stylesheet">
+
+

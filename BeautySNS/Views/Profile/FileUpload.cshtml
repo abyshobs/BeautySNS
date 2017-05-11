@@ -1,0 +1,18 @@
+﻿@model BeautySNS.Admin.Models.Profiles.DetailsViewModel
+
+@{
+    ViewBag.Title = "FileUpload";
+}
+
+@Html.Partial("_Message")
+<h4 class="page-header">Upload Profile photo</h4>
+
+@using (Html.BeginForm("FileUpload", "Profile", FormMethod.Post,
+                            new { enctype = "multipart/form-data" }))
+{
+    <div>
+        <input type="file" name="file" id="file" style="width: 100%;" />
+        <br />
+        <input type="submit" value="Upload" class="submit" />
+    </div>
+}*

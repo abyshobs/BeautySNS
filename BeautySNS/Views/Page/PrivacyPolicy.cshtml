@@ -1,0 +1,67 @@
+﻿@model BeautySNS.Admin.Models.Pages.PageViewModel
+@{
+    ViewBag.Title = "Privacy Policy";
+}
+
+<h2 class="page-header">Privacy Policy</h2>
+<div>
+    <p>
+        Our Privacy Policy applies to all our site members and registered users.
+        <br /> Maintaing trust between you and the BeautySNS is very important to us.
+    </p>
+</div>
+
+<div>
+    <h3 class="sub-header">Safeguarding User Information</h3>
+    <p>
+        Registered site users interact with their network and share professional information.
+        At present, this information isn't shared with third parties.
+        <br /> Should this principle change, our users will be notified, 
+        If you disagree with any of our changes, you may close your BeautySNS account.
+        <br /> By using our site even after policies change, you are consenting to the policy changes.
+    </p>
+</div>
+
+<div>
+    <h3 class="sub-header">User Profiles</h3>
+    We collect information about you when you create an account and a profile with us 
+    in order to provide you with a personalised experience.
+    <br />Information you provide on your profile can be seen by others who view your profile,
+    you have the right to change you profile information anytime by editing your profile.
+    <br /> You can also delete your account should you wish to.
+    Also, your profile is searcheable by other members of the site and you can also search other users' profiles.
+</div>
+
+<div>
+    <h3 class="sub-header">Security</h3>
+    <p>
+        Security safeguards have been implemented in order to protect your personal information.
+        Your passwords are fully encrypted in our database so no one has access to your account except you!
+        However, please be aware that the internet isn't always safe. Do take necessary steps to protecting 
+        your passwords 
+        <br /> and also choose strong passwords.
+    </p>
+</div>
+
+<div>
+    Should you wish to ask us any further questions about our Privacy policy
+    please contact us on BeautySNSUK@gmail.com
+
+    <br /><br /><br />
+    Regards,
+    <br /> BeautySNS.
+</div>
+
+<hr />
+<footer>
+    <p>
+        <a href="@Url.Action("AboutUs", "Page")">About Us</a> |
+        <a href="@Url.Action("PrivacyPolicy", "Page")">Privacy Policy</a> |
+        <a href="@Url.Action("SiteTerms", "Page")">Terms and Conditions</a> |
+        <a href="@Url.Action("FAQs", "Page")">FAQs</a> |
+        <a href="@Url.Action("Register", "Account")">Sign Up</a> |
+        <a href="@Url.Action("Login", "Account")"> Log In </a>
+    </p>
+    <p>BeautySNSUK@gmail.com</p>
+    <p>&copy; @DateTime.Now.Year - BeautySNS </p>
+</footer>

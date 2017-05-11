@@ -1,0 +1,40 @@
+﻿@model BeautySNS.Admin.Models.Pages.PageViewModel
+@{
+    ViewBag.Title = "AboutUs";
+}
+
+<h2 class="page-header">About Us</h2>
+<div>
+    <p>
+        Welcome to BeautySNS, a Social Networking Site where you can meet and 
+        connect with people in the hair and beauty industry.
+    </p>
+
+</div>
+
+<div>
+    <p>
+        Our mission is to make it easier for our users to seek and connect
+        with like-minded people. We want you to help each other progress in your
+        different areas of business and to also improve your network !
+    </p>
+</div>
+
+<div>
+    <p>For more information, Contact us on BeautySNSUK@gmail.com
+    <br /> All inquiries are answered within 24 hours</p>
+</div>
+
+<hr />
+<footer>
+    <p>
+        <a href="@Url.Action("AboutUs", "Page")">About Us</a> |
+        <a href="@Url.Action("PrivacyPolicy", "Page")">Privacy Policy</a> |
+        <a href="@Url.Action("SiteTerms", "Page")">Terms and Conditions</a> |
+        <a href="@Url.Action("FAQs", "Page")">FAQs</a> |
+        <a href="@Url.Action("Register", "Account")">Sign Up</a> |
+        <a href="@Url.Action("Login", "Account")"> Log In </a>
+    </p>
+    <p>BeautySNSUK@gmail.com</p>
+    <p>&copy; @DateTime.Now.Year - BeautySNS </p>
+</footer>

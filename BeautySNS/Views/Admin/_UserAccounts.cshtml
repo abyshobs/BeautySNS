@@ -1,0 +1,47 @@
+﻿@model IEnumerable<BeautySNS.Domain.Model.Account>
+
+@{
+    ViewBag.Title = "_Jobs";
+}
+
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.email)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.firstName)
+                    </td>
+                    
+                    <td>
+                        @Html.DisplayFor(modelItem => item.lastName)
+                    </td>
+                    
+                    <td>
+                        <a href="@Url.Action("UserProfileHomepage", "Profile", new { id = item.accountID})">
+                        View Profile
+                        </a>
+                    </td>
+                    <td>
+                        <a href="@Url.Action("UserDetails", "Admin", new { id = item.accountID})">
+                            View Details
+                        </a>
+                    </td>
+                    <td>
+                        <a href="@Url.Action("DeleteUser", "Admin", new { id = item.accountID})">
+                            Delete User
+                        </a>
+                    </td>                 
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+

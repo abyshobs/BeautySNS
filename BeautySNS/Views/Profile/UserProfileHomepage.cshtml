@@ -1,0 +1,123 @@
+﻿@model BeautySNS.Admin.Models.Profiles.DetailsViewModel
+
+@{
+    ViewBag.Title = "Account Details";
+}
+@Html.Partial("_Message")
+
+<div class="paragraphs">
+    <div class="row">
+        <div class="span4">
+            <img style="float:left" src="@Url.Action("getImg", "Profile", new { id = Model.Account.accountID })" class="img-circle" height="200" width="200" alt="avatar" />
+            <div><br /><br/><h4 style="font-family:Calibri">@Html.DisplayFor(model => model.fullName)</h4>
+                <h4>@Html.DisplayFor(model => model.Job.name)</h4>
+           
+               @if(Model.adminUser == true)
+               {
+                   <div>
+                       <a href="@Url.Action("DeleteUser", "Admin", new { id = Model.accountID})">
+                           Delete User
+                       </a>
+                   </div>
+               }
+               
+               else { 
+
+                if(Model.sameAccount == true)
+                {
+                <div></div>
+                }
+                
+            else
+                { 
+                if (Model.isFriend == false)
+                {
+                    <div>@Html.ActionLink("Send Network Request", "SendRequest", "Friend", new { id = Model.Account.accountID }, null) </div>
+                }
+                else
+                if (Model.isFriend == true)
+                {
+                    <div>
+                        "This user is part of your network"
+                        <br />@Html.ActionLink("Remove User", "RemoveUser", "Friend", new { id = Model.Account.accountID }, null)
+                    </div>
+                }
+                else
+                if (Model.sentRequest == true)
+                {
+                    <div>
+                        Pending Request
+                    </div>
+                }
+                }
+               }
+            </div>
+           </div>       
+    </div>
+</div>
+
+<div class="col-xs-3">
+    <h2 class="sub-header" style="font-family:Calibri">About @Html.DisplayFor(model => model.Account.firstName)</h2><hr />
+    <p style="font-size:medium">@Html.DisplayFor(model => model.aboutMe)</p>
+</div>
+
+<div class="col-xs-3">
+    <h2 style="font-family:Calibri">Work & Experience</h2><hr />
+    <p style="font-size:medium">@Html.DisplayFor(model => model.experience)</p>
+</div>
+
+<div class="col-xs-6"><h2 style="font-family:Calibri">Network</h2><hr />
+    <div>
+        @Html.Action("UserFriends", "Friend", new { area = "" })
+    </div>
+    </div>
+ 
+@if (Model.adminUser == false) { 
+<div class="col-xs-9">
+    <div class="pull-right">
+        <br/>
+        <a href="@Url.Action("AllUserFriends", "Friend", new { id = Model.accountID})">
+        <br/><b>View all users in @Html.DisplayFor(model => model.Account.firstName)'s Network</b>
+            </a>
+    </div>
+</div>
+
+}
+else if (Model.adminUser == true)
+{
+    <div class="col-xs-9">
+        <div class="pull-right">
+            <br />
+            <a href="@Url.Action("UserNetwork", "Admin", new { id = Model.accountID})">
+                <br /><b>View all users in @Html.DisplayFor(model => model.Account.firstName)'s Network</b>
+            </a>
+        </div>
+    </div>
+
+}
+<div class="clearfix"></div>
+
+@if (Model.adminUser == false) {
+<div><br /><br/><h5><a href="@Url.Action("ProfileDetails", new { id = Model.accountID})">See full profile details</a></h5></div>
+}
+
+else if (Model.adminUser == true)
+{
+    <div><br /><br /><h5><a href="@Url.Action("UserDetails", "Admin", new { id = Model.accountID})">See full profile details</a></h5></div>
+
+}
+
+ <h3 class="sub-header" style="font-family:Calibri"> Status Updates</h3>
+
+@if(Model.adminUser == true)
+{
+<div>
+    @Html.Action("AllAccessStatusUpdates", "StatusUpdate", new { area = "" })
+</div>
+}
+else if (Model.adminUser == false)
+{
+    <div>
+        @Html.Action("PublicStatusUpdates", "StatusUpdate", new { area = "" })
+    </div>
+}

@@ -1,0 +1,302 @@
+﻿@model BeautySNS.Admin.Models.Profiles.EditViewModel
+@{
+    ViewBag.Title = "Edit Account";
+}
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <br />
+            <img src="@Url.Action("getImg", "Profile", new { id = Model.Account.accountID })" class="nav-avatar img-responsive" align="middle" alt="avatar" />
+            <span class="avatar-span">
+                <b>@Html.DisplayFor(model => model.loggedInAccount.firstName) @Html.DisplayFor(model => model.loggedInAccount.lastName)</b>
+            </span>
+            <br />
+            <span class="avatar-span">
+                @Html.ActionLink("Change Profile Photo", "FileUpload", new { id = Model.profileID })
+            </span>
+
+            <br />
+            <br />
+
+            <ul class="nav nav-sidebar">
+                <li>
+                    <a href="@Url.Action("NewsFeed", "Alert")">
+                        <i class="glyphicon glyphicon-stats"></i>
+                        <span>News Feed</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("ProfileHomepage", "Profile")">
+                        <i class="glyphicon glyphicon-user"></i>
+                        <span>My Profile</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="@Url.Action("AccountDetails", "Account", new {id = Model.loggedInAccount.accountID })">
+                        <i class="glyphicon glyphicon-cog"></i>
+                        <span>Account Settings</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="@Url.Action("Friends", "Friend")">
+                        <i class="glyphicon glyphicon-user"></i>
+                        <span>My Network</span>
+                    </a>
+                </li>
+            </ul>
+            <br />
+            <br />
+            <span class="small-text">
+                About Us | Privacy Policy | FAQs | Terms
+                <p>&copy; @DateTime.Now.Year - BeautySNS</p>
+            </span>
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <p class="page-header">@Html.ActionLink("Profile Details", "ProfileDetails", new { id = Model.Account.accountID }) <br /></p>
+            <h2 class="page-header">Edit Profile</h2>
+
+            <div class="content-block data-disp">
+                <div class="sub-wrapper clearfix"></div>
+                <div class="content-block data-entry">
+                    <div class="sub-wrapper clearfix">
+                        <div class="form-horizontal">
+
+                            @using (Html.BeginForm("EditProfile", "Profile", FormMethod.Post))
+                            {
+                                @Html.ValidationSummary(true)
+
+                                <fieldset>
+
+                                    @Html.HiddenFor(model => model.profileID)
+                                    @Html.HiddenFor(model => model.accountID)
+
+                                    <div class="form-group">
+                                        <div class="col-sm-2 form-label">
+                                            @Html.DisplayNameFor(model => model.jobID)
+                                        </div>
+                                        <div>
+                                            @Html.DropDownListFor(m => m.jobID, new SelectList(Model.Jobs, "jobID", "name"), "Select a job", new { @class = "form-control" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-2 form-label">
+                                            @Html.DisplayNameFor(model => model.avatar)
+                                        </div>
+                                        <div class="col-sm-2 form-field">
+                                            <img src="@Url.Action("getImg", "Profile", new { id = Model.Account.accountID })" height="200" width="200" alt="avatar" />
+                                            @Html.ActionLink("Change Profile Photo", "FileUpload", new { id = Model.profileID }) <br />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-2 form-label">
+                                            @Html.DisplayNameFor(model => model.firstName)
+                                        </div>
+                                        <div>
+                                            @Html.EditorFor(model => model.firstName, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-2 form-label">
+                                            @Html.DisplayNameFor(model => model.lastName)
+                                        </div>
+                                        <div>
+                                            @Html.EditorFor(model => model.lastName, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-2 form-label">
+                                            @Html.DisplayNameFor(model => model.birthDate)
+                                        </div>
+                                        <div>
+                                            @Html.EditorFor(model => model.birthDate, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-2 form-label">
+                                            @Html.DisplayNameFor(model => model.email)
+                                        </div>
+                                        <div class="col-sm-2 form-field">
+                                            @Html.DisplayFor(model => model.Account.email)
+                                            <br /> @Html.ActionLink("Change Email", "ChangeEmail")
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-2 form-label">
+                                            @Html.DisplayNameFor(model => model.aboutMe)
+                                        </div>
+                                        <div>
+                                            @Html.EditorFor(model => model.aboutMe, new { htmlAttributes = new { rows = "3", @class = "form-control input-group-lg" } })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-2 form-label">
+                                            @Html.DisplayNameFor(model => model.education)
+                                        </div>
+                                        <div>
+                                            @Html.EditorFor(model => model.education, new { htmlAttributes = new { rows = "3", @class = "form-control input-group-lg" } })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-2 form-label">
+                                            @Html.DisplayNameFor(model => model.experience)
+                                        </div>
+                                        <div>
+                                            @Html.EditorFor(model => model.experience, new { htmlAttributes = new { rows = "3", @class = "form-control input-group-lg" } })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-2 form-label">
+                                            @Html.DisplayNameFor(model => model.location)
+                                        </div>
+                                        <div>
+                                            @Html.EditorFor(model => model.location, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-2 form-label">
+                                            @Html.DisplayNameFor(model => model.website)
+                                        </div>
+                                        <div>
+                                            @Html.EditorFor(model => model.website, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-2">
+                                            <input type="submit" value="Save" class="btn btn-default" />
+                                            @Html.ActionLink("Back", "ProfileDetails", new { id = Model.accountID }, new { @class = "btn btn-default" })
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="~/Content/Dashboard.css" rel="stylesheet">
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

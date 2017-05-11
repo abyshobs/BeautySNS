@@ -1,0 +1,190 @@
+﻿@model BeautySNS.Admin.Models.Accounts.DeleteViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <br /><br />
+            <img src="@Url.Action("getImg", "Profile", new { id = Model.loggedInAccount.accountID})" class="nav-avatar img-responsive" align="middle" alt="avatar" />
+            <span class="avatar-span">
+                <b>@Html.DisplayFor(model => model.firstName) @Html.DisplayFor(model => model.lastName)</b>
+            </span>
+            <br />
+            <span class="avatar-span">
+                <a href="@Url.Action("FileUpload", "Profile", new { id = Model.loggedInAccountID })"> Change Profile Photo</a>
+  </span>
+
+            <br />
+            <br />
+
+            <ul class="nav nav-sidebar">
+                <li>
+                    <a href="@Url.Action("NewsFeed", "Alert")">
+                        <i class="glyphicon glyphicon-stats"></i>
+                        <span>News Feed</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("ProfileHomePage", "Profile")">
+                        <i class="glyphicon glyphicon-user"></i>
+                        <span>My Profile</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="@Url.Action("AccountDetails", "Account", new {id = Model.loggedInAccountID })">
+                        <i class="glyphicon glyphicon-cog"></i>
+                        <span>Account Settings</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="@Url.Action("Friends", "Friend")">
+                        <i class="glyphicon glyphicon-user"></i>
+                        <span>My Network</span>
+                    </a>
+                </li>                
+            </ul>
+            <br />
+            
+            <span class="small-text">
+                About Us | Privacy Policy | FAQs | Terms
+                <p>&copy; @DateTime.Now.Year - BeautySNS</p>
+            </span>
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+           
+                <p class="page-header">
+                @Html.ActionLink("Edit Account |", "EditAccount", new { id = Model.accountID })
+                @Html.ActionLink("Change Email |", "ChangeEmail")
+                @Html.ActionLink("Change Password |", "EditPassword")
+                @Html.ActionLink("Delete Account ", "DeleteAccount", new { id = Model.accountID }) <br />
+            </p>
+          
+            <div class="form-horizontal">
+
+                <div class="content-block data-disp">
+                    <h2>Delete Account</h2><br />
+                    <div class="sub-wrapper clearfix"></div>
+
+                    <div class="content-block data-entry">
+                        <div class="sub-wrapper clearfix">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <legend><h5 style="color: red;">Are you sure you want to delete your account with us?</h5></legend>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-2 form-label">
+                                            @Html.DisplayNameFor(model => model.firstName)
+                                        </div>
+                                        <div class="col-sm-2 form-field">
+                                            @Html.DisplayFor(model => model.firstName)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-2 form-label">
+                                            @Html.DisplayNameFor(model => model.lastName)
+                                        </div>
+                                        <div class="col-sm-2 form-field">
+                                            @Html.DisplayFor(model => model.lastName)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-2 form-label">
+                                            @Html.DisplayNameFor(model => model.birthDate)
+                                        </div>
+                                        <div class="col-sm-2 form-field">
+                                            @Html.DisplayFor(model => model.birthDate)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-2 form-label">
+                                            @Html.DisplayNameFor(model => model.email)
+                                        </div>
+                                        <div class="col-sm-2 form-field">
+                                            @Html.DisplayFor(model => model.email)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-2 form-label">
+                                            @Html.DisplayNameFor(model => model.dateCreated)
+                                        </div>
+                                        <div class="col-sm-2 form-field">
+                                            @Html.DisplayFor(model => model.dateCreated)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-2 form-label">
+                                            @Html.DisplayNameFor(model => model.dateUpdated)
+                                        </div>
+                                        <div class="col-sm-2 form-field">
+                                            @Html.DisplayFor(model => model.dateUpdated)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-2">
+                                            @using (Html.BeginForm())
+                                            {
+                                                <input type="submit" value="Delete" class="btn btn-default" />
+                                                @Html.ActionLink("Back", "AccountDetails", new { id = Model.accountID }, new { @class = "btn btn-default" })
+                                            }
+                                        </div>
+                                    </div>
+
+                                </fieldset>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="~/Content/Dashboard.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

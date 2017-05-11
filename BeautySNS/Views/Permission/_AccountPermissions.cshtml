@@ -1,0 +1,51 @@
+﻿@model IEnumerable<BeautySNS.Domain.Model.AccountPermission>
+
+@{
+    ViewBag.Title = "_AccountPermissions";
+}
+
+<div class="table-responsive">
+    <table class="table table-striped">
+
+        <tr>
+            <th>Permission</th>
+            <th></th>
+            <th></th>
+            <th>Email</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Permission.name)
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.email)
+                    </td>
+
+                    <td>
+                        <a href="@Url.Action("AdminUserActivity", "Admin", new { id = item.accountID })">
+                            View Activity Page
+                        </a>
+                    </td>
+                   
+                    <td> @Html.ActionLink("View Details", "AccountPermissionDetails", new { id = item.accountPermissionID }) </td>
+
+                    <td> @Html.ActionLink("Change Permission", "EditAccountPermission", new { id = item.accountPermissionID }) </td>
+
+                    <td> @Html.ActionLink("Remove Permission", "DeleteAccountPermission", new { id = item.accountPermissionID }) </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+    </div>
+
+
